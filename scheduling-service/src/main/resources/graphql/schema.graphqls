@@ -1,0 +1,29 @@
+type Query {
+
+    patientHistory(patientId: ID!): [Appointment!]!
+
+    futureAppointments(patientId: ID!): [Appointment!]!
+
+    appointment(id: ID!): Appointment
+}
+
+type Appointment {
+
+    id: ID!
+
+    patientId: ID!
+
+    doctorId: ID
+
+    nurseId: ID
+
+    dateTime: String!
+
+    status: String!
+
+    description: String
+
+    createdAt: String!
+
+    updatedAt: String
+}
