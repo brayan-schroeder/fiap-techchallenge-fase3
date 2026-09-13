@@ -8,10 +8,6 @@ A comunicação entre os serviços é realizada de forma assíncrona utilizando 
 
 ---
 
-
-
----
-
 # 🚀 Executando o projeto
 
 Suba todo o ambiente:
