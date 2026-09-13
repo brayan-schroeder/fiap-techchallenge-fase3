@@ -8,39 +8,7 @@ A comunicação entre os serviços é realizada de forma assíncrona utilizando 
 
 ---
 
-# 🚀 Executando o projeto
-
-Suba todo o ambiente:
-
-```bash
-docker compose up -d --build
-```
-
-O Docker irá:
-
-1. criar o PostgreSQL;
-2. criar o RabbitMQ;
-3. compilar o Scheduling Service;
-4. compilar o Notification Service;
-5. criar as imagens;
-6. iniciar os quatro containers.
-
-Verifique os containers:
-
-```bash
-docker compose ps
-```
-
-Os serviços esperados são:
-
-```text
-techchallenge-postgres
-techchallenge-rabbitmq
-techchallenge-scheduling
-techchallenge-notification
-```
-
-## **IMPORTANTE:** Usuários iniciais
+# **IMPORTANTE:** Usuários iniciais
 
 Para facilitar a demonstração e os testes da aplicação, o Scheduling Service possui um `DataInitializer`.
 
@@ -113,6 +81,38 @@ As senhas são armazenadas utilizando BCrypt.
 Os usuários acima existem para facilitar a execução e avaliação do projeto.
 
 **Importante:** Não foram implementados endpoints para criação e manutenção de usuários, a fim de manter o projeto mais objetivo nesta análise e entrega da Fase 3, priorizando os requisitos e objetivos do Tech Challenge.
+
+# 🚀 Executando o projeto
+
+Suba todo o ambiente:
+
+```bash
+docker compose up -d --build
+```
+
+O Docker irá:
+
+1. criar o PostgreSQL;
+2. criar o RabbitMQ;
+3. compilar o Scheduling Service;
+4. compilar o Notification Service;
+5. criar as imagens;
+6. iniciar os quatro containers.
+
+Verifique os containers:
+
+```bash
+docker compose ps
+```
+
+Os serviços esperados são:
+
+```text
+techchallenge-postgres
+techchallenge-rabbitmq
+techchallenge-scheduling
+techchallenge-notification
+```
 
 ---
 
