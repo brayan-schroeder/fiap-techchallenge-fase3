@@ -39,7 +39,6 @@ techchallenge-rabbitmq
 techchallenge-scheduling
 techchallenge-notification
 ```
----
 
 ## **IMPORTANTE:** Usuários iniciais
 
