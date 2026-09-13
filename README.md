@@ -685,9 +685,7 @@ docker compose logs -f rabbitmq
 
 A Collection do Postman está disponível em:
 
-```text
 https://raw.githubusercontent.com/brayan-schroeder/fiap-techchallenge-fase3/refs/heads/main/postman.json
-```
 
 A Collection possui testes para:
 
