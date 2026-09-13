@@ -30,7 +30,7 @@ Senha: 123456
 Role: DOCTOR
 ```
 
-### Enfermeiras
+### Enfermeiros
 
 ```text
 Nome: Enfermeira Maria
