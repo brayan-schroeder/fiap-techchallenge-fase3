@@ -51,6 +51,24 @@ public class DataInitializer {
                             .build()
             );
 
+            User thirdPatientUser = userRepository.save(
+                    User.builder()
+                            .name("Tiago Maia")
+                            .email("tiago@email.com")
+                            .password(passwordEncoder.encode("123456"))
+                            .role(Role.PATIENT)
+                            .build()
+            );
+
+            User fourthPatientUser = userRepository.save(
+                    User.builder()
+                            .name("Helena Santos")
+                            .email("helena@email.com")
+                            .password(passwordEncoder.encode("123456"))
+                            .role(Role.PATIENT)
+                            .build()
+            );
+
             User doctorUser = userRepository.save(
                     User.builder()
                             .name("Dr. Carlos")
@@ -60,10 +78,28 @@ public class DataInitializer {
                             .build()
             );
 
+            User secondDoctorUser = userRepository.save(
+                    User.builder()
+                            .name("Dra. Patrícia")
+                            .email("patricia@email.com")
+                            .password(passwordEncoder.encode("123456"))
+                            .role(Role.DOCTOR)
+                            .build()
+            );
+
             User nurseUser = userRepository.save(
                     User.builder()
                             .name("Enfermeira Maria")
                             .email("maria@email.com")
+                            .password(passwordEncoder.encode("123456"))
+                            .role(Role.NURSE)
+                            .build()
+            );
+
+            User secondNurseUser = userRepository.save(
+                    User.builder()
+                            .name("Enfermeiro Eduardo")
+                            .email("eduardo@email.com")
                             .password(passwordEncoder.encode("123456"))
                             .role(Role.NURSE)
                             .build()
@@ -83,6 +119,20 @@ public class DataInitializer {
                             .build()
             );
 
+            patientRepository.save(
+                    Patient.builder()
+                            .user(thirdPatientUser)
+                            .birthDate(LocalDate.of(2000, 4, 15))
+                            .build()
+            );
+
+            patientRepository.save(
+                    Patient.builder()
+                            .user(fourthPatientUser)
+                            .birthDate(LocalDate.of(2001, 1, 5))
+                            .build()
+            );
+
             doctorRepository.save(
                     Doctor.builder()
                             .user(doctorUser)
@@ -91,10 +141,25 @@ public class DataInitializer {
                             .build()
             );
 
+            doctorRepository.save(
+                    Doctor.builder()
+                            .user(secondDoctorUser)
+                            .crm("789101")
+                            .specialty("Dermatology")
+                            .build()
+            );
+
             nurseRepository.save(
                     Nurse.builder()
                             .user(nurseUser)
                             .coren("987654")
+                            .build()
+            );
+
+            nurseRepository.save(
+                    Nurse.builder()
+                            .user(secondNurseUser)
+                            .coren("241965")
                             .build()
             );
         };

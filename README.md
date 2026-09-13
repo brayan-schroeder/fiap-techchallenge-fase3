@@ -187,7 +187,7 @@ User
 Patient
    │
    └── Appointment ─── Doctor
-                  └── Nurse
+                  └─── Nurse
 ```
 
 ---
@@ -196,9 +196,9 @@ Patient
 
 Para facilitar a demonstração e os testes da aplicação, o Scheduling Service possui um `DataInitializer`.
 
-Esses usuários representam os usuários previamente cadastrados no sistema e são criados automaticamente quando o banco está vazio.
+Esses usuários representam os usuários previamente cadastrados no sistema e são criados automaticamente quando o banco está **vazio**.
 
-### Médico
+### Médicos
 
 ```text
 Nome: Dr. Carlos
@@ -207,11 +207,25 @@ Senha: 123456
 Role: DOCTOR
 ```
 
-### Enfermeira
+```text
+Nome: Dra. Patrícia
+Email: patricia@email.com
+Senha: 123456
+Role: DOCTOR
+```
+
+### Enfermeiras
 
 ```text
-Nome: Enfemeira Maria
+Nome: Enfermeira Maria
 Email: maria@email.com
+Senha: 123456
+Role: NURSE
+```
+
+```text
+Nome: Enfermeiro Eduardo
+Email: eduardo@email.com
 Senha: 123456
 Role: NURSE
 ```
@@ -232,9 +246,25 @@ Senha: 123456
 Role: PATIENT
 ```
 
+```text
+Nome: Tiago Maia
+Email: tiago@email.com
+Senha: 123456
+Role: PATIENT
+```
+
+```text
+Nome: Helena Santos
+Email: helena@email.com
+Senha: 123456
+Role: PATIENT
+```
+
 As senhas são armazenadas utilizando BCrypt.
 
 Os usuários acima existem para facilitar a execução e avaliação do projeto.
+
+**Importante:** Não foram implementados endpoints para criação e manutenção de usuários, a fim de manter o projeto mais objetivo nesta análise e entrega da Fase 3, priorizando os requisitos e objetivos do Tech Challenge.
 
 ---
 
@@ -546,65 +576,6 @@ appointment.updated
 appointment.cancelled
 ```
 
-### Fluxo de criação
-
-```text
-POST /api/appointments
-        │
-        ▼
-Scheduling Service
-        │
-        ├── salva no PostgreSQL
-        │
-        └── publica appointment.created
-                         │
-                         ▼
-                      RabbitMQ
-                         │
-                         ▼
-                Notification Service
-```
-
-### Fluxo de atualização
-
-```text
-PUT /api/appointments/{id}
-        │
-        ▼
-Scheduling Service
-        │
-        ├── atualiza PostgreSQL
-        │
-        └── publica appointment.updated
-                         │
-                         ▼
-                      RabbitMQ
-                         │
-                         ▼
-                Notification Service
-```
-
-### Fluxo de cancelamento
-
-```text
-PATCH /api/appointments/{id}/cancel
-        │
-        ▼
-Scheduling Service
-        │
-        ├── atualiza PostgreSQL
-        │
-        └── publica appointment.cancelled
-                         │
-                         ▼
-                      RabbitMQ
-                         │
-                         ▼
-                Notification Service
-```
-
----
-
 # 12. Notification Service
 
 **Base URL:**
@@ -654,45 +625,7 @@ Atualmente o processamento do lembrete é demonstrado através dos logs da aplic
 
 ---
 
-# 13. Docker
-
-O ambiente inteiro foi configurado para execução com Docker Compose.
-
-Não é necessário instalar localmente:
-
-```text
-Java
-Maven
-PostgreSQL
-RabbitMQ
-```
-
-É necessário apenas:
-
-```text
-Docker Desktop
-Git
-```
-
-Os Dockerfiles utilizam um estágio de build com Maven e Java 21 para gerar automaticamente os JARs.
-
-Dessa forma, a pasta `target/` não precisa ser versionada no Git.
-
----
-
-# 14. Executando o projeto
-
-Clone o repositório:
-
-```bash
-git clone <REPOSITORY_URL>
-```
-
-Entre no projeto:
-
-```bash
-cd tech-challenge-fase3
-```
+# 13. Executando o projeto
 
 Suba todo o ambiente:
 
@@ -726,7 +659,7 @@ techchallenge-notification
 
 ---
 
-# 15. Logs
+# 14. Logs
 
 Para acompanhar o Scheduling Service:
 
@@ -748,12 +681,12 @@ docker compose logs -f rabbitmq
 
 ---
 
-# 16. Postman
+# 15. Postman
 
 A Collection do Postman está disponível em:
 
 ```text
-postman.json
+https://raw.githubusercontent.com/brayan-schroeder/fiap-techchallenge-fase3/refs/heads/main/postman.json
 ```
 
 A Collection possui testes para:
@@ -771,7 +704,7 @@ A Collection possui testes para:
 
 ---
 
-# 17. Cenários de segurança
+# 16. Cenários de segurança
 
 O projeto contempla os seguintes cenários:
 
@@ -873,7 +806,7 @@ Resultado esperado:
 
 ---
 
-# 18. Resumo dos serviços
+# 17. Resumo dos serviços
 
 | Serviço              | Porta | Responsabilidade                                                                                |
 | -------------------- | ----: | ----------------------------------------------------------------------------------------------- |
@@ -885,7 +818,7 @@ Resultado esperado:
 
 ---
 
-# 19. Status dos eventos
+# 18. Status dos eventos
 
 | Evento                  | Origem             | Destino              | Ação                               |
 | ----------------------- | ------------------ | -------------------- | ---------------------------------- |
@@ -895,7 +828,7 @@ Resultado esperado:
 
 ---
 
-# 20. Considerações finais
+# 19. Considerações finais
 
 O projeto demonstra:
 
