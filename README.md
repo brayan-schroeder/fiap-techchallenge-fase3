@@ -8,6 +8,44 @@ A comunicação entre os serviços é realizada de forma assíncrona utilizando 
 
 ---
 
+
+
+---
+
+# 🚀 Executando o projeto
+
+Suba todo o ambiente:
+
+```bash
+docker compose up -d --build
+```
+
+O Docker irá:
+
+1. criar o PostgreSQL;
+2. criar o RabbitMQ;
+3. compilar o Scheduling Service;
+4. compilar o Notification Service;
+5. criar as imagens;
+6. iniciar os quatro containers.
+
+Verifique os containers:
+
+```bash
+docker compose ps
+```
+
+Os serviços esperados são:
+
+```text
+techchallenge-postgres
+techchallenge-rabbitmq
+techchallenge-scheduling
+techchallenge-notification
+```
+
+---
+
 ## 1. Objetivo
 
 O sistema foi desenvolvido para atender a um cenário hospitalar no qual é necessário:
@@ -625,41 +663,7 @@ Atualmente o processamento do lembrete é demonstrado através dos logs da aplic
 
 ---
 
-# 13. Executando o projeto
-
-Suba todo o ambiente:
-
-```bash
-docker compose up -d --build
-```
-
-O Docker irá:
-
-1. criar o PostgreSQL;
-2. criar o RabbitMQ;
-3. compilar o Scheduling Service;
-4. compilar o Notification Service;
-5. criar as imagens;
-6. iniciar os quatro containers.
-
-Verifique os containers:
-
-```bash
-docker compose ps
-```
-
-Os serviços esperados são:
-
-```text
-techchallenge-postgres
-techchallenge-rabbitmq
-techchallenge-scheduling
-techchallenge-notification
-```
-
----
-
-# 14. Logs
+# 13. Logs
 
 Para acompanhar o Scheduling Service:
 
@@ -681,7 +685,7 @@ docker compose logs -f rabbitmq
 
 ---
 
-# 15. Postman
+# 14. Postman
 
 A Collection do Postman está disponível em:
 
@@ -702,7 +706,7 @@ A Collection possui testes para:
 
 ---
 
-# 16. Cenários de segurança
+# 15. Cenários de segurança
 
 O projeto contempla os seguintes cenários:
 
@@ -804,7 +808,7 @@ Resultado esperado:
 
 ---
 
-# 17. Resumo dos serviços
+# 16. Resumo dos serviços
 
 | Serviço              | Porta | Responsabilidade                                                                                |
 | -------------------- | ----: | ----------------------------------------------------------------------------------------------- |
@@ -816,7 +820,7 @@ Resultado esperado:
 
 ---
 
-# 18. Status dos eventos
+# 17. Status dos eventos
 
 | Evento                  | Origem             | Destino              | Ação                               |
 | ----------------------- | ------------------ | -------------------- | ---------------------------------- |
@@ -826,7 +830,7 @@ Resultado esperado:
 
 ---
 
-# 19. Considerações finais
+# 18. Considerações finais
 
 O projeto demonstra:
 
