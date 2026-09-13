@@ -39,6 +39,81 @@ techchallenge-rabbitmq
 techchallenge-scheduling
 techchallenge-notification
 ```
+---
+
+## **IMPORTANTE:** Usuários iniciais
+
+Para facilitar a demonstração e os testes da aplicação, o Scheduling Service possui um `DataInitializer`.
+
+Esses usuários representam os usuários previamente cadastrados no sistema e são criados automaticamente quando o banco está **vazio**.
+
+### Médicos
+
+```text
+Nome: Dr. Carlos
+Email: carlos@email.com
+Senha: 123456
+Role: DOCTOR
+```
+
+```text
+Nome: Dra. Patrícia
+Email: patricia@email.com
+Senha: 123456
+Role: DOCTOR
+```
+
+### Enfermeiras
+
+```text
+Nome: Enfermeira Maria
+Email: maria@email.com
+Senha: 123456
+Role: NURSE
+```
+
+```text
+Nome: Enfermeiro Eduardo
+Email: eduardo@email.com
+Senha: 123456
+Role: NURSE
+```
+
+### Pacientes
+
+```text
+Nome: João da Silva
+Email: joao@email.com
+Senha: 123456
+Role: PATIENT
+```
+
+```text
+Nome: Ana Souza
+Email: ana@email.com
+Senha: 123456
+Role: PATIENT
+```
+
+```text
+Nome: Tiago Maia
+Email: tiago@email.com
+Senha: 123456
+Role: PATIENT
+```
+
+```text
+Nome: Helena Santos
+Email: helena@email.com
+Senha: 123456
+Role: PATIENT
+```
+
+As senhas são armazenadas utilizando BCrypt.
+
+Os usuários acima existem para facilitar a execução e avaliação do projeto.
+
+**Importante:** Não foram implementados endpoints para criação e manutenção de usuários, a fim de manter o projeto mais objetivo nesta análise e entrega da Fase 3, priorizando os requisitos e objetivos do Tech Challenge.
 
 ---
 
@@ -226,83 +301,7 @@ Patient
 
 ---
 
-## 6. Usuários iniciais
-
-Para facilitar a demonstração e os testes da aplicação, o Scheduling Service possui um `DataInitializer`.
-
-Esses usuários representam os usuários previamente cadastrados no sistema e são criados automaticamente quando o banco está **vazio**.
-
-### Médicos
-
-```text
-Nome: Dr. Carlos
-Email: carlos@email.com
-Senha: 123456
-Role: DOCTOR
-```
-
-```text
-Nome: Dra. Patrícia
-Email: patricia@email.com
-Senha: 123456
-Role: DOCTOR
-```
-
-### Enfermeiras
-
-```text
-Nome: Enfermeira Maria
-Email: maria@email.com
-Senha: 123456
-Role: NURSE
-```
-
-```text
-Nome: Enfermeiro Eduardo
-Email: eduardo@email.com
-Senha: 123456
-Role: NURSE
-```
-
-### Pacientes
-
-```text
-Nome: João da Silva
-Email: joao@email.com
-Senha: 123456
-Role: PATIENT
-```
-
-```text
-Nome: Ana Souza
-Email: ana@email.com
-Senha: 123456
-Role: PATIENT
-```
-
-```text
-Nome: Tiago Maia
-Email: tiago@email.com
-Senha: 123456
-Role: PATIENT
-```
-
-```text
-Nome: Helena Santos
-Email: helena@email.com
-Senha: 123456
-Role: PATIENT
-```
-
-As senhas são armazenadas utilizando BCrypt.
-
-Os usuários acima existem para facilitar a execução e avaliação do projeto.
-
-**Importante:** Não foram implementados endpoints para criação e manutenção de usuários, a fim de manter o projeto mais objetivo nesta análise e entrega da Fase 3, priorizando os requisitos e objetivos do Tech Challenge.
-
----
-
-## 7. Segurança
+## 6. Segurança
 
 A autenticação utiliza:
 
@@ -337,7 +336,7 @@ Um paciente somente pode acessar consultas pertencentes a ele.
 
 ---
 
-# 8. Scheduling Service
+# 7. Scheduling Service
 
 **Base URL:**
 
@@ -347,7 +346,7 @@ http://localhost:8080
 
 ---
 
-## 8.1 Health Check
+## 7.1 Health Check
 
 ```http
 GET /health
@@ -363,7 +362,7 @@ Scheduling Service is running
 
 ---
 
-# 9. Consultas
+# 8. Consultas
 
 Base:
 
@@ -371,7 +370,7 @@ Base:
 /api/appointments
 ```
 
-## 9.1 Criar consulta
+## 8.1 Criar consulta
 
 ```http
 POST /api/appointments
@@ -409,7 +408,7 @@ no RabbitMQ.
 
 ---
 
-## 9.2 Buscar consulta
+## 8.2 Buscar consulta
 
 ```http
 GET /api/appointments/{id}
@@ -421,7 +420,7 @@ Pacientes podem consultar somente consultas pertencentes a eles.
 
 ---
 
-## 9.3 Histórico do paciente
+## 8.3 Histórico do paciente
 
 ```http
 GET /api/appointments/patient/{patientId}
@@ -435,7 +434,7 @@ Pacientes podem consultar somente o próprio histórico.
 
 ---
 
-## 9.4 Consultas futuras
+## 8.4 Consultas futuras
 
 ```http
 GET /api/appointments/patient/{patientId}/future
@@ -447,7 +446,7 @@ As mesmas regras de autorização do histórico são aplicadas.
 
 ---
 
-## 9.5 Alterar consulta
+## 8.5 Alterar consulta
 
 ```http
 PUT /api/appointments/{id}
@@ -478,7 +477,7 @@ appointment.updated
 
 ---
 
-## 9.6 Cancelar consulta
+## 8.6 Cancelar consulta
 
 ```http
 PATCH /api/appointments/{id}/cancel
@@ -505,7 +504,7 @@ appointment.cancelled
 
 ---
 
-# 10. GraphQL
+# 9. GraphQL
 
 **Endpoint:**
 
@@ -519,7 +518,7 @@ GraphiQL:
 http://localhost:8080/graphiql
 ```
 
-## 10.1 Histórico
+## 9.1 Histórico
 
 ```graphql
 query {
@@ -537,7 +536,7 @@ query {
 }
 ```
 
-## 10.2 Consultas futuras
+## 9.2 Consultas futuras
 
 ```graphql
 query {
@@ -553,7 +552,7 @@ query {
 }
 ```
 
-## 10.3 Consulta individual
+## 9.3 Consulta individual
 
 ```graphql
 query {
@@ -573,7 +572,7 @@ O GraphQL utiliza as mesmas regras de autorização da API REST.
 
 ---
 
-# 11. RabbitMQ
+# 10. RabbitMQ
 
 RabbitMQ é utilizado para realizar a comunicação assíncrona entre os microserviços.
 
@@ -610,7 +609,7 @@ appointment.updated
 appointment.cancelled
 ```
 
-# 12. Notification Service
+# 11. Notification Service
 
 **Base URL:**
 
@@ -618,7 +617,7 @@ appointment.cancelled
 http://localhost:8081
 ```
 
-## 12.1 Health Check
+## 11.1 Health Check
 
 ```http
 GET /health
@@ -659,7 +658,7 @@ Atualmente o processamento do lembrete é demonstrado através dos logs da aplic
 
 ---
 
-# 13. Logs
+# 12. Logs
 
 Para acompanhar o Scheduling Service:
 
@@ -681,7 +680,7 @@ docker compose logs -f rabbitmq
 
 ---
 
-# 14. Postman
+# 13. Postman
 
 A Collection do Postman está disponível em:
 
@@ -702,7 +701,7 @@ A Collection possui testes para:
 
 ---
 
-# 15. Cenários de segurança
+# 14. Cenários de segurança
 
 O projeto contempla os seguintes cenários:
 
@@ -804,7 +803,7 @@ Resultado esperado:
 
 ---
 
-# 16. Resumo dos serviços
+# 15. Resumo dos serviços
 
 | Serviço              | Porta | Responsabilidade                                                                                |
 | -------------------- | ----: | ----------------------------------------------------------------------------------------------- |
@@ -816,7 +815,7 @@ Resultado esperado:
 
 ---
 
-# 17. Status dos eventos
+# 16. Status dos eventos
 
 | Evento                  | Origem             | Destino              | Ação                               |
 | ----------------------- | ------------------ | -------------------- | ---------------------------------- |
@@ -826,7 +825,7 @@ Resultado esperado:
 
 ---
 
-# 18. Considerações finais
+# 17. Considerações finais
 
 O projeto demonstra:
 
